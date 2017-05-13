@@ -96,22 +96,21 @@ public class CreateMessage : MonoBehaviour {
 		textT.text = m.text;
 		t.transform.localPosition = new Vector3 (novaP.x, novaP.y, t.transform.position.z);
 		rect = t.GetComponent<RectTransform>();
-		UpdateMessagePosition(rect.sizeDelta.y);
 		t.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+		UpdateMessagePosition(rect.sizeDelta.y);
 	
 		e.transform.localPosition = new Vector3 (novaP.x, novaP.y, e.transform.position.z);
 		rect = e.GetComponent<RectTransform>();
 		e.transform.SetParent (canvas.transform);
-		UpdateMessagePosition(rect.sizeDelta.y);
 		e.GetComponent<TextMessageScript>().Init(m);
 		e.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 
-		p.transform.localPosition = new Vector3 (novaP.x, novaP.y, p.transform.position.z);
+		p.transform.localPosition = new Vector3 (novaP.x - 70.0f, novaP.y, p.transform.position.z);
 		rect = p.GetComponent<RectTransform>();
 		rect.sizeDelta = new Vector2 (30.0f, 30.0f);
 		p.transform.SetParent (canvas.transform);
 		p.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-		UpdateMessagePosition(rect.sizeDelta.y * 3);
+		UpdateMessagePosition(rect.rect.height);
 	}
 
 	public void UpdateMessagePosition (float p)
