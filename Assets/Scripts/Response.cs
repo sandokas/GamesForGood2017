@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Telemovel/Response")]
+[CreateAssetMenu(menuName = "Interaction/Response")]
 public class Response : ScriptableObject
 {
+    public string textTooltip;
     [TextArea]
-    public string description;
+    public string text;
+	public bool censored;
     public Message message;
-    /*
-    void Test()
-    {
-        message.description;
-    }*/
 }

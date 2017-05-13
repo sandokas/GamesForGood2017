@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class EcraTelemovel : MonoBehaviour {
-
     public Message startMessage;
     private List<GameObject> gameObjectsOnScreen;
-    public Vector3 startMessagePosition;
+    public GameObject messagePrefab;
+    public Vector3 startPosition;
     
 	// Use this for initialization
 	void Start () {
@@ -20,21 +20,26 @@ public class EcraTelemovel : MonoBehaviour {
 		
 	}
 
-    void ShowMessage(Message message)
+    public void ShowMessage(Message message)
     {
         foreach (GameObject goMessage in gameObjectsOnScreen)
         {
-            goMessage.transform.Translate(new Vector3(5, 0, 0));
+            goMessage.transform.Translate(new Vector3(0, 25, 0));
         }
-        GameObject newMessage = new GameObject(Random.Range(1, 99999999).ToString());
-        newMessage.transform.SetParent(this.transform);
-        Text newText = newMessage.AddComponent<Text>();
-        newText.text = message.description;
+        GameObject newObject = Instantiate(messagePrefab, startPosition,Quaternion.identity) as GameObject;
+        TextMessageScript textMessage = newObject.GetComponent<TextMessageScript>();
+        textMessage.Init(message, newObject);
 
-        //Text myText = GetComponent<Text>();
-        //myText.text = message.description;
+        newObject.transform.SetParent(this.transform);
 
+        Text t = newObject.GetComponentInChildren<Text>();
+
+        t.text = message.text;
+
+        gameObjectsOnScreen.Add(newObject);
     }
-
-
+    public void NoResponsesOnMessage(Message m)
+    {
+        Debug.Log("Game has ended due to no more responses");
+    }
 }

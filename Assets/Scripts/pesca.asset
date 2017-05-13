@@ -8,10 +8,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fe4d09280727be418bea91a9569198d, type: 3}
+  m_Script: {fileID: 11500000, guid: 6315a1d1bf81e70409021e3db92b5f92, type: 3}
   m_Name: pesca
   m_EditorClassIdentifier: 
-  description: "Queres vir \xE0 pesca?"
+  text: Manif dia 30 de MAIO para acolher melhor os refugiados!
+  type: 0
+  delay: 0
+  image: {fileID: 0}
   responses:
-  - {fileID: 11400000, guid: b3076006e33325344b7c8ff9e669adf2, type: 2}
-  - {fileID: 11400000, guid: 9bf49308a43fc1047b162bf0f020834c, type: 2}
+  - {fileID: 11400000, guid: 7444756abda787549af7776703b8460c, type: 2}
+  - {fileID: 11400000, guid: 94efd50de7a6720498d55a359f7115b0, type: 2}
