@@ -4,17 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class TextMessageScript : MonoBehaviour {
-    private Message message;
-    private GameObject textMessage;
+	private Message message;
+	public List<GameObject> buttons;
 
-    public Vector3[] buttonPositions;
-    public GameObject buttonPrefab;
-    private List<GameObject> buttons;
-
-    public void Init(Message m, GameObject o)
+    public void Init(Message m)
     {
         message = m;
-        textMessage = o;
 
         buttons = new List<GameObject>();
         //Button[] buttons = o.GetComponentsInChildren<Button>();
@@ -22,20 +17,27 @@ public class TextMessageScript : MonoBehaviour {
         {
             int i = 0;
 
+			Debug.Log(message.responses.Length);
+			if (message.responses.Length == 0)
+			{
+				Destroy(gameObject);
+			}
 
             foreach (Response r in message.responses)
             {
                 //TODO: Vector buttonPositions cannot be shorter than numbers of responses
-                GameObject go = Instantiate(buttonPrefab, buttonPositions[i], Quaternion.identity, textMessage.transform);
-                
+				if (r != null)
+				{
+					GameObject go = gameObject.transform.GetChild(i).gameObject;
 
-                buttons.Add(go);
+	                buttons.Add(go);
 
-                Button b = go.GetComponent<Button>();
-                b.name = r.textTooltip;
-                Text t = b.GetComponentInChildren<Text>();
-                t.text = r.textTooltip;
-                b.onClick.AddListener(delegate { DoResponse(b.name); });
+	                Button b = go.GetComponent<Button>();
+	                b.name = r.textTooltip;
+	                Text t = b.GetComponentInChildren<Text>();
+	                t.text = r.textTooltip;
+	                b.onClick.AddListener(delegate { DoResponse(b.name); });
+				}
 
                 i++;
             }
@@ -57,8 +59,8 @@ public class TextMessageScript : MonoBehaviour {
     {
         foreach (GameObject go in buttons)
         {
-            Button b = go.GetComponent<Button>();
-            b.enabled = false;
+            //Button b = go.GetComponent<Button>();
+			Destroy(go);
         }
 
         foreach (Response r in message.responses)

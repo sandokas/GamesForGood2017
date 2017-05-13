@@ -8,11 +8,16 @@ public class EcraTelemovel : MonoBehaviour {
     private List<GameObject> gameObjectsOnScreen;
     public GameObject messagePrefab;
     public Vector3 startPosition;
+
+	public CreateMessage 	createM;
     
 	// Use this for initialization
 	void Start () {
         gameObjectsOnScreen = new List<GameObject>();
+		createM = gameObject.GetComponent<CreateMessage> ();
+
         ShowMessage(startMessage);
+
 	}
 	
 	// Update is called once per frame
@@ -21,22 +26,25 @@ public class EcraTelemovel : MonoBehaviour {
 	}
 
     public void ShowMessage(Message message)
-    {
-        foreach (GameObject goMessage in gameObjectsOnScreen)
+   	{
+		createM.CreateM(message);
+        
+		foreach (GameObject goMessage in gameObjectsOnScreen)
         {
             goMessage.transform.Translate(new Vector3(0, 25, 0));
         }
-        GameObject newObject = Instantiate(messagePrefab, startPosition,Quaternion.identity) as GameObject;
-        TextMessageScript textMessage = newObject.GetComponent<TextMessageScript>();
-        textMessage.Init(message, newObject);
 
-        newObject.transform.SetParent(this.transform);
-
-        Text t = newObject.GetComponentInChildren<Text>();
-
-        t.text = message.text;
-
-        gameObjectsOnScreen.Add(newObject);
+//        GameObject newObject = Instantiate(messagePrefab, startPosition,Quaternion.identity) as GameObject;
+//        TextMessageScript textMessage = newObject.GetComponent<TextMessageScript>();
+//        textMessage.Init(message, newObject);
+//
+//        newObject.transform.SetParent(this.transform);
+//
+//        Text t = newObject.GetComponentInChildren<Text>();
+//
+//        t.text = message.text;
+//
+//        gameObjectsOnScreen.Add(newObject);
     }
     public void NoResponsesOnMessage(Message m)
     {

@@ -15,70 +15,84 @@ public class ScrollM : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		
-		GameObject[] m = GameObject.FindGameObjectsWithTag("Messages");
-
-		RectTransform m0 = m[0].GetComponent<RectTransform>();
-
-		maxM = m0;
-		minM = m0;
-
-		foreach (GameObject go in m)
-		{
-			RectTransform reGo = go.GetComponent<RectTransform>();
-
-			Debug.Log(reGo.localPosition.y);
-			Debug.Log(maxM.localPosition.y);
-
-			if (reGo.localPosition.y > maxM.localPosition.y)
-			{
-				maxM = reGo;
-			}
-			else if (reGo.localScale.y < minM.localPosition.y)
-			{
-				minM = reGo; 
-			}
-
-			messages.Add(reGo);
-
-		}
-
-
 	}
 
 	void Update ()
 	{
-		if (Input.GetMouseButtonDown(0))
+		UpdateMessages();
+
+		if (messages.Count != 0)
 		{
-			previousMouseY = Camera.main.ScreenToWorldPoint (Input.mousePosition).y;
-		}
-		else if (Input.GetMouseButton(0))
-		{
-			float mouseY = Camera.main.ScreenToWorldPoint (Input.mousePosition).y;
-
-			if (previousMouseY < mouseY && maxM.localPosition.y < 0.0f)
+			if (Input.GetMouseButtonDown(0))
 			{
-				foreach (RectTransform m in messages)
-				{
-					float ym = m.localPosition.y;
-
-					ym -= scrollRatio * Time.deltaTime;
-
-					m.localPosition = new Vector3(m.localPosition.x, ym, m.localPosition.z);
-				}
+				previousMouseY = Camera.main.ScreenToWorldPoint (Input.mousePosition).y;
 			}
-			else if (previousMouseY > mouseY && minM.localPosition.y <= -600.0f)
+			else if (Input.GetMouseButton(0))
 			{
-				foreach (RectTransform m in messages)
+				float mouseY = Camera.main.ScreenToWorldPoint (Input.mousePosition).y;
+
+				if (previousMouseY < mouseY && minM.localPosition.y <= -100.0f)
 				{
-					float ym = m.localPosition.y;
+					foreach (RectTransform m in messages)
+					{
+						float ym = m.localPosition.y;
 
-					ym += scrollRatio * Time.deltaTime;
+						ym += scrollRatio * Time.deltaTime;
 
-					m.localPosition = new Vector3(m.localPosition.x, ym, m.localPosition.z);
+						m.localPosition = new Vector3(m.localPosition.x, ym, m.localPosition.z);
+					}
 				}
-			}
 
-			previousMouseY = Camera.main.ScreenToWorldPoint (Input.mousePosition).y;
+				if (previousMouseY > mouseY && maxM.localPosition.y >= 175.0f)
+				{
+					foreach (RectTransform m in messages)
+					{
+						float ym = m.localPosition.y;
+
+						ym -= scrollRatio * Time.deltaTime;
+
+						m.localPosition = new Vector3(m.localPosition.x, ym, m.localPosition.z);
+					}
+				}
+
+				previousMouseY = Camera.main.ScreenToWorldPoint (Input.mousePosition).y;
+			}
 		}
 	}
+
+	public void UpdateMessages ()
+	{
+		GameObject[] m = GameObject.FindGameObjectsWithTag("Messages");
+
+		List<RectTransform> rcts = new List<RectTransform>();
+
+		if (m.Length > 0)
+		{
+			RectTransform m0 = m[0].GetComponent<RectTransform>();
+		
+			maxM = m0;
+			minM = m0;
+
+			foreach (GameObject go in m)
+			{
+				RectTransform reGo = go.GetComponent<RectTransform>();
+
+				if (reGo.localPosition.y > maxM.localPosition.y)
+				{
+					maxM = reGo;
+				}
+				else if (reGo.localPosition.y < minM.localPosition.y)
+				{
+					minM = reGo; 
+				}
+
+				rcts.Add(reGo);
+			}
+
+			messages = rcts;
+		}
+
+	}
 }
+
+ 
