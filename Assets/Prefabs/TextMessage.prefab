@@ -55,12 +55,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b904c97a4d27a54c9043614c75268b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonPositions:
-  - {x: 60, y: 30, z: 0}
-  - {x: 0, y: 30, z: 0}
-  - {x: -60, y: 30, z: 0}
-  buttonPrefab: {fileID: 1006041248942436, guid: 034997ec5a56119469de79837610aa3d,
-    type: 2}
+  button: {fileID: 1711064697357704, guid: 7e186186b83dd4f2fb2287065eb421bd, type: 2}
 --- !u!114 &114916551618766284
 MonoBehaviour:
   m_ObjectHideFlags: 1

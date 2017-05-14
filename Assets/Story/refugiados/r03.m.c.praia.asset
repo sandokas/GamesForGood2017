@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6315a1d1bf81e70409021e3db92b5f92, type: 3}
+  m_Name: r03.m.c.praia
+  m_EditorClassIdentifier: 
+  text: "K calor!!! Amanh\xE3 vamos \xE0 praia? ;)"
+  type: 0
+  delay: 0
+  image: {fileID: 0}
+  responses:
+  - {fileID: 11400000, guid: 5239208d97eda5449b037fa21753d2fd, type: 2}
+  - {fileID: 11400000, guid: 685cffdcdb65e944cad7a7d2f4aa21b2, type: 2}
+  character: {fileID: 11400000, guid: e4816857f239b4247ad74986a4281c01, type: 2}

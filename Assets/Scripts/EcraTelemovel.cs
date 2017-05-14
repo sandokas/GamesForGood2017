@@ -27,24 +27,24 @@ public class EcraTelemovel : MonoBehaviour {
 
     public void ShowMessage(Message message)
    	{
-		createM.CreateM(message);
+		//createM.CreateM(message);
         
 		foreach (GameObject goMessage in gameObjectsOnScreen)
         {
             goMessage.transform.Translate(new Vector3(0, 25, 0));
         }
 
-//        GameObject newObject = Instantiate(messagePrefab, startPosition,Quaternion.identity) as GameObject;
-//        TextMessageScript textMessage = newObject.GetComponent<TextMessageScript>();
-//        textMessage.Init(message, newObject);
-//
-//        newObject.transform.SetParent(this.transform);
-//
-//        Text t = newObject.GetComponentInChildren<Text>();
-//
-//        t.text = message.text;
-//
-//        gameObjectsOnScreen.Add(newObject);
+        GameObject newObject = Instantiate(messagePrefab, startPosition,Quaternion.identity) as GameObject;
+        TextMessageScript textMessage = newObject.GetComponent<TextMessageScript>();
+        textMessage.Init(message);
+
+        newObject.transform.SetParent(this.transform);
+
+        Text t = newObject.GetComponentInChildren<Text>();
+
+        t.text = message.text;
+
+        gameObjectsOnScreen.Add(newObject);
     }
     public void NoResponsesOnMessage(Message m)
     {

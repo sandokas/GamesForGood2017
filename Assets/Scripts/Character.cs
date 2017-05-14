@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "TargetedInteraction/Character")]
+[CreateAssetMenu(menuName = "Interaction/Character")]
 public class Character : ScriptableObject {
+    public Sprite image;
+    public string text;
+    public bool banned;
 
-	public Interaction interaction;
-
-	public void StartInteraction()
-	{
-		interaction.Show ();
-	}
 }

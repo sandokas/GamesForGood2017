@@ -6,8 +6,6 @@ using UnityEngine;
 public class Response : ScriptableObject
 {
     public string textTooltip;
-    [TextArea]
-    public string text;
-	public bool censored;
     public Message message;
+    public bool censored;
 }

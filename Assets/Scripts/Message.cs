@@ -12,4 +12,5 @@ public class Message : ScriptableObject
 	public float delay;
 	public Sprite image;
     public Response[] responses;
+    public Character character;
 }
