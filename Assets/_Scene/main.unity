@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   days:
-  - {fileID: 11400000, guid: f3e89bb939bfa4a33ab86e6f47a429cf, type: 2}
+  - {fileID: 0}
 --- !u!4 &1058069772
 Transform:
   m_ObjectHideFlags: 0
@@ -650,7 +650,7 @@ Prefab:
     - target: {fileID: 224500964430954570, guid: 9ef6ea6f7e3fe40a39263a5cf5fdee7f,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 148
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224500964430954570, guid: 9ef6ea6f7e3fe40a39263a5cf5fdee7f,
         type: 2}
@@ -700,7 +700,7 @@ Prefab:
     - target: {fileID: 224265980048590650, guid: 9ef6ea6f7e3fe40a39263a5cf5fdee7f,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -74
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224265980048590650, guid: 9ef6ea6f7e3fe40a39263a5cf5fdee7f,
         type: 2}

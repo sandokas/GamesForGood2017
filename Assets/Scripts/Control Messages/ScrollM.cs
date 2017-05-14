@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ScrollM : MonoBehaviour {
 
-	public List<RectTransform> 	messages;
+	public RectTransform[] 		messages;
 	public RectTransform		maxM;
 	public RectTransform		minM;
 
@@ -14,14 +14,14 @@ public class ScrollM : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+
+
 	}
 
 	void Update ()
 	{
-		UpdateMessages();
-
-		if (messages.Count != 0)
+		
+		if (messages.Length != 0)
 		{
 			if (Input.GetMouseButtonDown(0))
 			{
@@ -58,40 +58,6 @@ public class ScrollM : MonoBehaviour {
 				previousMouseY = Camera.main.ScreenToWorldPoint (Input.mousePosition).y;
 			}
 		}
-	}
-
-	public void UpdateMessages ()
-	{
-		GameObject[] m = GameObject.FindGameObjectsWithTag("Messages");
-
-		List<RectTransform> rcts = new List<RectTransform>();
-
-		if (m.Length > 0)
-		{
-			RectTransform m0 = m[0].GetComponent<RectTransform>();
-		
-			maxM = m0;
-			minM = m0;
-
-			foreach (GameObject go in m)
-			{
-				RectTransform reGo = go.GetComponent<RectTransform>();
-
-				if (reGo.localPosition.y > maxM.localPosition.y)
-				{
-					maxM = reGo;
-				}
-				else if (reGo.localPosition.y < minM.localPosition.y)
-				{
-					minM = reGo; 
-				}
-
-				rcts.Add(reGo);
-			}
-
-			messages = rcts;
-		}
-
 	}
 }
 

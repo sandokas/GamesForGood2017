@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class gotoAmnistia : MonoBehaviour {
+public class Messages : MonoBehaviour {
+
+	public List<GameObject> lstM;
 
 	// Use this for initialization
 	void Start () {
@@ -12,10 +14,5 @@ public class gotoAmnistia : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-	}
-
-	public void GoToAmnistia ()
-	{
-		Application.OpenURL ("http://www.amnistia.pt/index.php/o-que-fazemos/as-nossas-campanhas/refugiados");
 	}
 }

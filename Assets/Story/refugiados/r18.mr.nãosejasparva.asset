@@ -9,14 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6315a1d1bf81e70409021e3db92b5f92, type: 3}
-  m_Name: r01.m.j.manif
+  m_Name: "r18.mr.na\u0303osejasparva"
   m_EditorClassIdentifier: 
-  text: "Manif amanh\xE3 dia 30 de Maio por um melhor acolhimento dos refugiados!
-    Aparece!"
+  text: "N\xE3o sejas parva"
   type: 0
-  delay: 5
+  delay: 0
   image: {fileID: 0}
   responses:
-  - {fileID: 11400000, guid: 975e78c2b62efe24ab3a8c0a2ced7a91, type: 2}
-  - {fileID: 11400000, guid: b5a1cefb3cbe44a42aa707d702132320, type: 2}
-  character: {fileID: 11400000, guid: 8be8d86b850efb94d83ab1d38545bcec, type: 2}
+  - {fileID: 11400000, guid: d2f95e830d70cc34fbf108c7e314967b, type: 2}
+  character: {fileID: 0}

@@ -12,7 +12,7 @@ public class TextMessageScript : MonoBehaviour {
 	// Changes position based on the button order <btn>
 	private Vector2 ChangeButtonPosition(int btn)
 	{
-		return new Vector2 (-50 + 80 * btn, -40);
+		return new Vector2 (-50 + 80 * btn, -90);
 	}
 
     public void Init(Message m)
@@ -106,8 +106,9 @@ public class TextMessageScript : MonoBehaviour {
 
     public void ShowEndMessage(Message m)
     {
-        EcraTelemovel ecraTelemovel = this.GetComponentInParent<EcraTelemovel>();
-        if (ecraTelemovel != null) { 
+		EcraTelemovel ecraTelemovel = GameObject.Find("Canvas").GetComponentInParent<EcraTelemovel>();
+        if (ecraTelemovel != null)
+		{ 
             StartCoroutine(ecraTelemovel.NoResponsesOnMessage(message));
         }
     }
