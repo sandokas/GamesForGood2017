@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: r01.r.s01
   m_EditorClassIdentifier: 
   textTooltip: Share!
-  message: {fileID: 0}
+  message: {fileID: 11400000, guid: fda77b10de81f534689c75195db4a9ad, type: 2}
   censored: 0

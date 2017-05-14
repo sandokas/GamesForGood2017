@@ -12,23 +12,28 @@ public class TextMessageScript : MonoBehaviour {
 	// Changes position based on the button order <btn>
 	private Vector2 ChangeButtonPosition(int btn)
 	{
-		return new Vector2 (-50 + 80 * btn, -25);
+		return new Vector2 (-50 + 80 * btn, -40);
 	}
 
     public void Init(Message m)
     {
+		if (m == null) {
+			return;
+		}
+
         message = m;
 
         buttons = new List<GameObject>();
         //Button[] buttons = o.GetComponentsInChildren<Button>();
-        if (message.type == Message.Type.Message)
-        {
+        //Currently auto-messaging not working, forcing a button everytime.
+        //if (message.type == Message.Type.Message)
+        //{
             int i = 0;
 
-			if (message.responses.Length == 0)
-			{
-				Destroy(gameObject);
-			}
+			//if (message.responses.Length == 0)
+			//{
+			//	Destroy(gameObject);
+			//}
 				
             foreach (Response r in message.responses)
             {
@@ -46,26 +51,31 @@ public class TextMessageScript : MonoBehaviour {
 					Text t = b.GetComponentInChildren<Text>();
 	                t.text = r.textTooltip;
 
-					RectTransform rectTransform = t.GetComponent<RectTransform> ();
-					rectTransform.sizeDelta = new Vector2 (100, 80);
+					//RectTransform rectTransform = t.GetComponent<RectTransform> ();
+					//rectTransform.sizeDelta = new Vector2 (100, 80);
 
 	                b.onClick.AddListener(delegate { DoResponse(b.name); });
 				}
 
                 i++;
             }
+        //}
+        //else
+        //{
+        //    if (message.responses.Length > 0) { 
+        //		if (message.responses [0].message != null) {
+        //			ShowMessage (message.responses [0].message);
+        //		}
+        //    } else
+        //    {
+        //        EcraTelemovel ecraTelemovel = this.GetComponentInParent<EcraTelemovel>();
+        //        ecraTelemovel.NoResponsesOnMessage(message);
+        //    }
+        //}
+        if (message.responses.Length <= 0) { 
+            ShowEndMessage(message);
         }
-        else
-        {
-            if (message.responses.Length > 0) { 
-                ShowMessage(message.responses[0].message);
-            } else
-            {
-                EcraTelemovel ecraTelemovel = this.GetComponentInParent<EcraTelemovel>();
-                ecraTelemovel.NoResponsesOnMessage(message);
-            }
-        }
-        //share.onClick += DoShare();
+
     }
 
     public void DoResponse(string textTooltip)
@@ -80,7 +90,9 @@ public class TextMessageScript : MonoBehaviour {
         {
             if (r.textTooltip == textTooltip)
             {
-                ShowMessage(r.message);
+				if (r.message != null) {
+					ShowMessage (r.message);
+				}
             }
         }
     }
@@ -89,7 +101,15 @@ public class TextMessageScript : MonoBehaviour {
     {
         EcraTelemovel ecraTelemovel = this.GetComponentInParent<EcraTelemovel>();
 
-        ecraTelemovel.ShowMessage(message);
+		StartCoroutine (ecraTelemovel.ShowMessage(message));
+    }
+
+    public void ShowEndMessage(Message m)
+    {
+        EcraTelemovel ecraTelemovel = this.GetComponentInParent<EcraTelemovel>();
+        if (ecraTelemovel != null) { 
+            StartCoroutine(ecraTelemovel.NoResponsesOnMessage(message));
+        }
     }
 }
 

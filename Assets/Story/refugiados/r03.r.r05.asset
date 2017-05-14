@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2fc2ce3ed9a36a4f87bd2bfbeeb6208, type: 3}
   m_Name: r03.r.r05
   m_EditorClassIdentifier: 
-  textTooltip: 
-  message: {fileID: 0}
+  textTooltip: praia
+  message: {fileID: 11400000, guid: 924d4982bfd693e4a97904e8c3133406, type: 2}
   censored: 0

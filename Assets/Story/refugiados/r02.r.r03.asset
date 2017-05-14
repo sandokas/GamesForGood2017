@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2fc2ce3ed9a36a4f87bd2bfbeeb6208, type: 3}
   m_Name: r02.r.r03
   m_EditorClassIdentifier: 
-  textTooltip: empty
+  textTooltip: enviar
   message: {fileID: 11400000, guid: d9e404788ed82464fadcd8aa2df61fa7, type: 2}
   censored: 0

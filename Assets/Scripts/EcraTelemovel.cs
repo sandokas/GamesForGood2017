@@ -16,7 +16,9 @@ public class EcraTelemovel : MonoBehaviour {
         gameObjectsOnScreen = new List<GameObject>();
 		createM = gameObject.GetComponent<CreateMessage> ();
 
-        ShowMessage(startMessage);
+		if (startMessage != null) {
+			StartCoroutine (ShowMessage (startMessage));
+		}
 
 	}
 	
@@ -25,13 +27,13 @@ public class EcraTelemovel : MonoBehaviour {
 		
 	}
 
-    public void ShowMessage(Message message)
+	public IEnumerator ShowMessage(Message message)
    	{
 		//createM.CreateM(message);
         
 		foreach (GameObject goMessage in gameObjectsOnScreen)
         {
-            goMessage.transform.Translate(new Vector3(0, 25, 0));
+            goMessage.transform.Translate(new Vector3(0, 70, 0));
         }
 
         GameObject newObject = Instantiate(messagePrefab, startPosition,Quaternion.identity) as GameObject;
@@ -42,12 +44,18 @@ public class EcraTelemovel : MonoBehaviour {
 
         Text t = newObject.GetComponentInChildren<Text>();
 
-        t.text = message.text;
+		if (message != null) {
+			t.text = message.text;
+		}
 
         gameObjectsOnScreen.Add(newObject);
+
+		yield return new WaitForSeconds(3f);
     }
-    public void NoResponsesOnMessage(Message m)
+
+    public IEnumerator NoResponsesOnMessage(Message m)
     {
         Debug.Log("Game has ended due to no more responses");
+        yield return new WaitForSeconds(5f);
     }
 }

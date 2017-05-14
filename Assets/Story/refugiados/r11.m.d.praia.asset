@@ -16,4 +16,4 @@ MonoBehaviour:
   delay: 0
   image: {fileID: 0}
   responses: []
-  character: {fileID: 0}
+  character: {fileID: 11400000, guid: 85914e39d1a85b54f907a8be9e53e404, type: 2}
