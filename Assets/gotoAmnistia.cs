@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class gotoAmnistia : MonoBehaviour {
 
@@ -18,4 +19,8 @@ public class gotoAmnistia : MonoBehaviour {
 	{
 		Application.OpenURL ("http://www.amnistia.pt/index.php/o-que-fazemos/as-nossas-campanhas/refugiados");
 	}
+    public void GoToMainM()
+    {
+        SceneManager.LoadScene(0);
+    }
 }

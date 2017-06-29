@@ -8,6 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/MainM.unity
     guid: 1f5a42608e7664f83ae34ddd222ee8dd
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Scene/amnistia.unity
     guid: c2948db5842a74a37bc91d82c2f0972c
